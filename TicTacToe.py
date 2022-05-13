@@ -1,72 +1,65 @@
-from collection import deque
+# Hacemos el tablero que sea 3x3
+tablero = ['-','-','-','-','-','-','-','-','-']
 
-turno = deque(["1","2"])
-tablero = [ [" ", " ", " "], 
-           [" ", " ", " "], 
-           [" ", " ", " "]]
+# Mostramos el tablero en el formato del gato
+def dis():
+    print('|' + tablero[0] + '|' + tablero[1] + '|' + tablero[2])
+    print('|' + tablero[3] + '|' + tablero[4] + '|' + tablero[5])
+    print('|' + tablero[6] + '|' + tablero[7] + '|' + tablero[8])
+ 
+# Revisa si algún jugador ganó el juego
+def revisar(tablero):
+    p1 = 'x'
+    p2 = 'o'
+    
+    # Revisa todas las probabilidades de que algun jugador haya ganado
+    if tablero[0] == tablero[1] == tablero[2] == p1 or tablero[0] == tablero[1] == tablero[2] == p2:
+        return True
+    elif tablero[3] == tablero[4] == tablero[5] == p1 or tablero[3] == tablero[4] == tablero[5] == p2:
+        return True
+    elif tablero[6] == tablero[7] == tablero[8] == p1 or tablero[6] == tablero[7] == tablero[8] == p2:
+        return True
+    elif tablero[3] == tablero[0] == tablero[6] == p1 or tablero[3] == tablero[0] == tablero[6] == p2:
+        return True
+    elif tablero[1] == tablero[4] == tablero[7] == p1 or tablero[1] == tablero[4] == tablero[7] == p2:
+        return True
+    elif tablero[2] == tablero[5] == tablero[8] == p1 or tablero[2] == tablero[5] == tablero[8] == p2:
+        return True
+    elif tablero[0] == tablero[4] == tablero[8] == p1 or tablero[0] == tablero[4] == tablero[8] == p2:
+        return True
+    elif tablero[2] == tablero[4] == tablero[6] == p1 or tablero[2] == tablero[4] == tablero[6] == p2:
+        return True
+    else:
+        return False
 
-def rotar_turno():
-    turno.rotate()
-    return turno[0]
+# Pregunta por la posición
+def inp(tablero):
+    x = int(input('Ingresa la posición: '))
+    if tablero[x-1] == '-':
+        return x
+    else:
+        print('El valor ya existe, ingrese un nuevo valor')
+        return inp(tablero)
+    
+# Pregunta por los nombres de los jugadores
+player1 = input('Nombre de jugador 1: ')
+player2 = input('Nombre de jugador 2: ')
+dis()
 
-def mostrar_tablero():
-    print ("")
-    for fila in tablero:
-        print (fila)
-        
-def procesar_posicion(posicion):
-    fila,columna=posicion.split(',')
-    return [int(fila)-1,int(columna)-1]
-
-def posicion_correcta(posicion):
-    if 0 <= posicion[0] <= 2 and 0 <= posicion[1] <= posicion:
-        if tablero[posicion[0]][posicion[1]] == "":
-            return True
-    return False
-
-def actualizar_tablero(posicion,jugador):
-           tablero[posicion[0]][posicion[1]] = jugador
-           
-def ha_ganado(j):
-           if tablero[0] == [j,j,j] or tablero[1] == [j,j,j] or tablero[2] == [j,j,j]
-                 return True
-           elif tablero[0][0] == j and tablero[1][0] == j and tablero[2][0] == j
-                 return True
-           elif tablero[0][1] == j and tablero[1][1] == j and tablero[2][1] == j
-                 return True
-           elif tablero[0][2] == j and tablero[1][2] == j and tablero[2][2] == j
-                 return True
-           elif tablero[0][0] == j and tablero[1][1] == j and tablero[2][2] == j
-                 return True
-           elif tablero[0][2] == j and tablero[1][1] == j and tablero[2][0] == j
-                 return True
-           return False
-
-def juego():
-    mostrar_tablero()
-    jugador = rotar_turno()
-    while True:
-        input("Turno de jugador {}. Elije la posición fila,columna de 1 a 3: ".format(jugador))
-        if posicion == 'Salir':
+# Da los turnos para jugar
+for i in range(9):     # 9 es el número de turnos máximos que puede haber
+    if i%2 == 0:
+        x = inp(tablero)
+        tablero[x-1] = 'x'
+        dis()
+        if revisar(tablero):
+            print('Jugador 1 gana')
             break
-       
-        try:
-            posicion_1 = procesar_posicion(posicion)
-        except:
-            print)"Error, posicion {} no es valida".format(posicion)
-            continue
-        if posicion_correcta(posicion_1):
-           print("correcta")
-           actualizar_tablero(posicion_1,jugador) 
-           mostrar_tablero()
-           
-           if ha_gando(jugador):
-               print("Jugador de {} ha ganado!!!!".format(jugador))
-               break
-           jugador = rotar_turno()
-              
-           
         else:
-            print("incorrecta")
-        
-juego()
+            x = inp(tablero)
+            tablero[x-1] = 'o'
+            dis()
+            if revisar(tablero):
+                print('Jugador 2 gana')
+                break
+print('Juego terminado')
