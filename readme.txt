@@ -1,6 +1,6 @@
 # Videojuego de Tic-Tac-Toe para TC1001S.202
   
-  Como evidencia de nuestra semana tec en la clase de 'Herramientas computacionales: el arte de la programación (Gpo 202)' para
+ Como evidencia de nuestra semana tec en la clase de 'Herramientas computacionales: el arte de la programación (Gpo 202)' para
  nuestro proyecto final decidimos hacer un juego simple y sencillo del juego de nuestra niñez llamado Tic-Tac-Toe o mejor conocido
  como juego del gato en México.
  
@@ -13,4 +13,9 @@
  Con ayuda de nuestras experiencia en python gracias a clases que tomamos en nuestro primer año en el tec y con una recapitulación 
  de conceptos de matrices pudimos crear nuestro juego.
  
-
+Instrucciones:
+Los jugadores solo deben de ingresar la posición en la que desean poner la 'x' o 'o'. Las posiciones estan denominadas de la siguiente manera:
+|1|2|3
+|4|5|6
+|7|8|9
+Cada jugador tiene un turno, y en total solo pueden haber 9 rondas.
