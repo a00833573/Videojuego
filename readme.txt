@@ -10,7 +10,7 @@
  determinan si uno de los jugadores gano o si el juego acabo en un empate. También fue necesario que el orden en que los usarios 
  ponen su símbolo en el tablero se de manera organizada y que se vayan turnando.
  
- Con ayuda de nuestra experiencia de python gracias a clases que tomamos en nuestro primer año en el tec y con una recapitulación 
+ Con ayuda de nuestras experiencia en python gracias a clases que tomamos en nuestro primer año en el tec y con una recapitulación 
  de conceptos de matrices pudimos crear nuestro juego.
  
 
